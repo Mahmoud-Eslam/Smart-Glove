@@ -1,0 +1,44 @@
+15:35:20 **** Incremental Build of configuration Debug for project Glove ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../LCD.h:14,
+                 from ../main.c:8:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c: In function 'main':
+../main.c:18: warning: implicit declaration of function 'UART_INIT'
+../main.c:85: warning: implicit declaration of function 'UART_TransmitChar'
+Finished building: ../main.c
+ 
+Building target: Glove.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Glove.map -mmcu=atmega32 -o "Glove.elf"  ./ADC.o ./DIO.o ./DIO_CFG.o ./LCD.o ./USART.o ./main.o   
+Finished building target: Glove.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S Glove.elf  >"Glove.lss"
+Finished building: Glove.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Glove.elf  "Glove.hex"
+Finished building: Glove.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 Glove.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:   10950 bytes (33.4% Full)
+(.text + .data + .bootloader)
+
+Data:         90 bytes (4.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+15:35:21 Build Finished. 0 errors, 3 warnings. (took 962ms)
+
